@@ -1,4 +1,3 @@
-
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes, CallbackQueryHandler, ConversationHandler
 import logging
@@ -329,7 +328,15 @@ def main() -> None:
     order_conv_handler = ConversationHandler(
         entry_points=[
             MessageHandler(
-                filters.Regex(f"({'🗓 Bepul konsultatsiya uchun buyurtma qoldirish|🗓 Оставить заявку на бесплатную консультацию|🗓 Request a free consultation'})"), 
+                filters.TEXT & filters.Regex("🗓 Bepul konsultatsiya uchun buyurtma qoldirish"), 
+                order
+            ),
+            MessageHandler(
+                filters.TEXT & filters.Regex("🗓 Оставить заявку на бесплатную консультацию"), 
+                order
+            ),
+            MessageHandler(
+                filters.TEXT & filters.Regex("🗓 Request a free consultation"), 
                 order
             ),
             CommandHandler("order", order_command)
@@ -372,19 +379,45 @@ def main() -> None:
     )
     application.add_handler(change_lang_handler)
     
-    # Xizmatlar va boshqa menyular uchun handler
+    # Xizmatlar uchun handler - alohida regex patterns
     application.add_handler(MessageHandler(
-        filters.Regex(f"({'ℹ️ Xizmatlar|ℹ️ Услуги|ℹ️ Services'})"), 
+        filters.TEXT & filters.Regex("ℹ️ Xizmatlar"), 
+        services
+    ))
+    application.add_handler(MessageHandler(
+        filters.TEXT & filters.Regex("ℹ️ Услуги"), 
+        services
+    ))
+    application.add_handler(MessageHandler(
+        filters.TEXT & filters.Regex("ℹ️ Services"), 
         services
     ))
     
+    # Narxlar uchun handler - alohida regex patterns
     application.add_handler(MessageHandler(
-        filters.Regex(f"({'💵 Narxlar|💵 Цены|💵 Prices'})"), 
+        filters.TEXT & filters.Regex("💵 Narxlar"), 
+        prices
+    ))
+    application.add_handler(MessageHandler(
+        filters.TEXT & filters.Regex("💵 Цены"), 
+        prices
+    ))
+    application.add_handler(MessageHandler(
+        filters.TEXT & filters.Regex("💵 Prices"), 
         prices
     ))
     
+    # Admin bilan bog'lanish uchun handler - alohida regex patterns
     application.add_handler(MessageHandler(
-        filters.Regex(f"({'✉️ Admin bilan aloqa|✉️ Связаться с администратором|✉️ Contact admin'})"), 
+        filters.TEXT & filters.Regex("✉️ Admin bilan bog'lanish"), 
+        contact_admin
+    ))
+    application.add_handler(MessageHandler(
+        filters.TEXT & filters.Regex("✉️ Связаться с администратором"), 
+        contact_admin
+    ))
+    application.add_handler(MessageHandler(
+        filters.TEXT & filters.Regex("✉️ Contact admin"), 
         contact_admin
     ))
     
