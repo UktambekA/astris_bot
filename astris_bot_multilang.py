@@ -768,10 +768,10 @@ async def process_order(update: Update, context: ContextTypes.DEFAULT_TYPE) -> i
     )
     
     # User ma'lumotlarini ham qo'shish
-    admin_message += f"\n<b>Username:</b> @{user.username if user.username else 'Yo\'q'}"
+    admin_message += f"\n<b>Username:</b> @{user.username if user.username else 'No'}"
     admin_message += f"\n<b>User ID:</b> {user.id}"
     admin_message += f"\n<b>First name:</b> {user.first_name}"
-    admin_message += f"\n<b>Last name:</b> {user.last_name if user.last_name else 'Yo\'q'}"
+    admin_message += f"\n<b>Last name:</b> {user.last_name if user.last_name else 'No'}"
     
     for admin_id in ADMIN_IDS:
         try:
