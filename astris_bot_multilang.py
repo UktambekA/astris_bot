@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes, CallbackQueryHandler, ConversationHandler
 import logging
@@ -390,7 +384,7 @@ def main() -> None:
     ))
     
     application.add_handler(MessageHandler(
-        filters.Regex(f"({'✉️ Admin bilan bog\'lanish|✉️ Связаться с администратором|✉️ Contact admin'})"), 
+        filters.Regex(f"({'✉️ Admin bilan aloqa|✉️ Связаться с администратором|✉️ Contact admin'})"), 
         contact_admin
     ))
     
