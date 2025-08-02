@@ -3,7 +3,7 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 import logging
 
 # TOKEN ni to'g'ridan-to'g'ri shu yerga kiriting
-TOKEN = "7890497579:AAEccjVmmlMdfac3nC6V0tMB-PApFGn9ydo"  # @BotFather dan olingan tokeni shu yerga yozing
+TOKEN = "8385748468:AAFw7fYLID1Md-WzBOITV7pAcY7EP5ZBdDQ"  # @BotFather dan olingan tokeni shu yerga yozing
 
 # Admin IDs (bu yerga adminlarning Telegram ID larini qo'shing)
 ADMIN_IDS = [7592352824]  # Bu joyga adminlarning Telegram ID raqamlari qo'yiladi
